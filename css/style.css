@@ -1,3 +1,186 @@
+/* ===== reset ===== */
 * {
-    color : #5A67D8;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+body {
+    font-family: "Pretendard", Arial, sans-serif;
+    background-color: #f6f7fb;
+    color: #333;
+}
+
+
+/* ===== header ===== */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 40px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #ddd;
+
+    position: relative;
+    
+
+}
+
+/* logo */
+.logo img {
+    height: 50px;
+}
+
+/* ===== navigation ===== */
+.gnb {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.menu {
+    display: flex;
+    gap: 60px;
+
+}
+
+.menu > li {
+    position: relative;
+}
+
+.menu > li > a {
+    font-size: 16px;
+    font-weight: 600;
+    padding: 8px 0;
+    display: block;
+}
+
+/* submenu */
+.submenu {
+    position: absolute;
+    top: 36px;
+    left: 0;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    min-width: 150px;
+    display: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.submenu li a {
+    display: block;
+    padding: 10px 14px;
+    font-size: 14px;
+}
+
+.submenu li a:hover {
+    background-color: #f0f2f8;
+}
+
+/* hover */
+/* .menu > li:hover .submenu {
+    display: block;
+} */
+
+
+/* 로그인 */
+.log {
+    display: flex;
+    gap: 20px;
+    font-weight: 600;
+}
+
+.login {
+    color: #555;
+    padding: 6px 14px;
+}
+
+.signup {
+    padding: 6px 14px;
+    border-radius: 20px;
+    background-color: #6b7cff;
+    color: #fff;
+}
+
+
+.hamburger {
+    width: 32px;
+    height: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: none; /* 기본은 숨김 */
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.hamburger span {
+    display: block;
+    height: 3px;
+    background-color: #333;
+    border-radius: 2px;
+}
+
+.mobile-nav {
+    position: fixed;
+    top: 0;
+    right: -260px;
+    width: 260px;
+    height: 100vh;
+    background: #fff;
+    transition: right 0.3s ease;
+    box-shadow: -4px 0 10px rgba(0,0,0,0.15);
+    z-index: 999;
+}
+
+.mobile-nav.active {
+    right: 0;
+}
+
+.mobile-nav ul {
+    padding: 80px 20px;
+}
+
+.mobile-nav li a {
+    display: block;
+    padding: 14px 0;
+    font-weight: 600;
+}
+
+.divider {
+    height: 1px;
+    background: #eee;
+    margin: 20px 0;
+}
+
+
+@media (max-width: 850px) {
+    .gnb {
+        display: none;
+    }
+    .login,
+    .signup {
+        display: none;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+
+}
+

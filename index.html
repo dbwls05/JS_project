@@ -4,66 +4,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>습관 트래커</title>
-    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/index.css">
 
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="js/script.js"></script>
 </head>
 
 <body>
+
     <!-- header -->
     <header>
-        <nav class="menu">
-            <ul class="navi">
+
+        <h1 class="logo"><a href="index.html"><img src="./img/Habitt!_logo.png" alt=""></a></h1>
+
+        <nav class="gnb">
+            <ul class="menu">
                 <li>
-                    <a href="#">내 챌린지</a>
+                    <a href="#">Habitt 소개</a>
                     <ul class="submenu">
-                        <li><a href="#">대쉬보드</a></li>
-                        <li><a href="#">30일 챌린지</a></li>
-                        <li><a href="#">100일 챌린지</a></li>
+                        <li><a href="#">Habitt란?</a></li>
+                        <li><a href="#">서비스 철학</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="#">통계</a>
+                    <a href="#">기능</a>
                     <ul class="submenu">
-                        <li><a href="#">주간 통계</a></li>
-                        <li><a href="#">월간 통계</a></li>
-                        <li><a href="#">전체 통계</a></li>
+                        <li><a href="#">주요 기능</a></li>
+                        <li><a href="#">기록 방식</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">습관 관리</a>
+                    <ul class="submenu">
+                        <li><a href="#">내 습관</a></li>
+                        <li><a href="#">습관 목록</a></li>
+                        <li><a href="#">새 습관 만들기</a></li>
                     </ul>
                 </li>
                 <li>
                     <a href="#">마이페이지</a>
                     <ul class="submenu">
-                        <li><a href="#">프로필설정</a></li>
-                        <li><a href="#">테마설정</a></li>
-                        <li><a href="#">공지사항</a></li>
+                        <li><a href="#">내 습관 통계</a></li>
+                        <li><a href="#">설정</a></li>
                     </ul>
                 </li>
-                
+
             </ul>
+
         </nav>
 
-        <div>
-            <p id="username">000님</p>
+        <div class="log">
+            <a href="#" class="login">로그인</a>
+            <a href="#" class="signup">회원가입</a>
+
+            <button class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
-        
+
+
     </header>
 
+    <nav class="mobile-nav">
+    <ul>
+        <li><a href="#">Habitt 소개</a></li>
+        <li><a href="#">기능</a></li>
+        <li><a href="#">습관 관리</a></li>
+        <li><a href="#">마이페이지</a></li>
+        <li class="divider"></li>
+        <li><a href="#">로그인</a></li>
+        <li><a href="#">회원가입</a></li>
+    </ul>
+</nav>
 
-    <!-- contents -->
-    <div class="contents">
-        <div class="myhabit">
-            <div>
-                <h2>현재 챌린지 0개 진행중...</h2>
-            </div>
-
-            <div class="progress">
-                
-            </div>
+    <div class="main">
+        <div class="imgslide">
+            <a href="#"><img src="img/slide2.jpg" alt="슬라이드2"></a>
+            <a href="#"><img src="img/slide3.jpg" alt="슬라이드3"></a>
+            <a href="#"><img src="img/slide4.jpg" alt="슬라이드4"></a>
+            <a href="#"><img src="img/slide1.jpg" alt="슬라이드1"></a>
         </div>
-
     </div>
+
 </body>
 
 </html>

@@ -1,0 +1,44 @@
+/* .main { 
+    margin : 30px;
+    padding : 30px;
+    width : 70%;
+    background-color: #fff;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
+    
+} */
+
+/* ===== Main ===== */
+.main {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+
+.imgslide {
+    width: 1750px;
+    height: 750px;
+    position: relative; 
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.imgslide > a {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 100%;
+}
+
+.imgslide img {
+    width: 90%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
