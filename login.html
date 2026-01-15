@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인 | 회원가입</title>
+
+    <!-- 아이콘 -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/login.css">
+
+    <script src="js/login.js"></script>
+</head>
+
+<body>
+
+    <header>
+
+        <h1 class="logo"><a href="index.html"><img src="./img/Habitt!_logo.png" alt=""></a></h1>
+
+        <nav class="gnb">
+            <ul class="menu">
+                <li>
+                    <a href="#">Habitt 소개</a>
+                    <ul class="submenu">
+                        <li><a href="#">Habitt란?</a></li>
+                        <li><a href="#">서비스 철학</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">기능</a>
+                    <ul class="submenu">
+                        <li><a href="#">주요 기능</a></li>
+                        <li><a href="#">기록 방식</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">습관 관리</a>
+                    <ul class="submenu">
+                        <li><a href="#">내 습관</a></li>
+                        <li><a href="#">습관 목록</a></li>
+                        <li><a href="#">새 습관 만들기</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">마이페이지</a>
+                    <ul class="submenu">
+                        <li><a href="#">내 습관 통계</a></li>
+                        <li><a href="#">설정</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+
+        </nav>
+
+        
+        <button class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+
+    </header>
+
+    <div class="wrapper">
+
+        <!-- 로그인 -->
+        <form class="login-form">
+            <h1>로그인</h1>
+
+            <div class="input-box">
+                <input type="text" placeholder="아이디" required>
+                <i class="bx bxs-user"></i>
+            </div>
+
+            <div class="input-box">
+                <input type="password" placeholder="비밀번호" required>
+                <i class="bx bxs-lock-alt"></i>
+            </div>
+
+            <div class="remember-forgot">
+                <label>
+                    <input type="checkbox"> 로그인 상태 유지
+                </label>
+                <a href="#">비밀번호 찾기</a>
+            </div>
+
+            <button type="submit" class="btn">로그인</button>
+
+            <div class="link-text">
+                <p>계정이 없으신가요? <a href="#">회원가입</a></p>
+            </div>
+        </form>
+
+        <!-- 회원가입 -->
+        <form class="register-form">
+            <h1>회원가입</h1>
+
+            <div class="input-box">
+                <input type="text" placeholder="아이디" required>
+                <i class="bx bxs-user"></i>
+            </div>
+
+            <div class="input-box">
+                <input type="email" placeholder="이메일" required>
+                <i class="bx bxs-envelope"></i>
+            </div>
+
+            <div class="input-box">
+                <input type="password" placeholder="비밀번호" required>
+                <i class="bx bxs-lock-alt"></i>
+            </div>
+
+            <div class="input-box">
+                <input type="password" placeholder="비밀번호 확인" required>
+                <i class="bx bxs-lock"></i>
+            </div>
+
+            <button type="submit" class="btn">회원가입</button>
+
+            <div class="link-text">
+                <p>이미 계정이 있으신가요? <a href="#">로그인</a></p>
+            </div>
+        </form>
+
+    </div>
+
+</body>
+
+</html>
