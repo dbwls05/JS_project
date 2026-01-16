@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Habitt!</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="css/inform.css">
 
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="js/script.js"></script>
+    <script src="js/inform.js"></script>
 </head>
 
 <body>
-
     <!-- header -->
     <header>
 
@@ -24,7 +24,7 @@
                 <li>
                     <a href="#">Habitt 소개</a>
                     <ul class="submenu">
-                        <li><a href="inform.html">Habitt란?</a></li>
+                        <li><a href="#">Habitt란?</a></li>
                         <li><a href="#">서비스 철학</a></li>
                     </ul>
                 </li>
@@ -46,8 +46,8 @@
                 <li>
                     <a href="#">마이페이지</a>
                     <ul class="submenu">
-                        <li><a href="login.html">내 습관 통계</a></li>
-                        <li><a href="login.html">설정</a></li>
+                        <li><a href="#">내 습관 통계</a></li>
+                        <li><a href="#">설정</a></li>
                     </ul>
                 </li>
 
@@ -89,34 +89,81 @@
         </ul>
     </nav>
 
-    <!-- 메인 베너 -->
-    <!-- 메인 배너 -->
-    <div class="main">
-        <div class="imgslide">
-            <div class="slide-track">
-                <a href="#"><img src="img/slide1.jpg" alt="슬라이드1"></a>
-                <a href="#"><img src="img/slide2.jpg" alt="슬라이드2"></a>
-                <a href="#"><img src="img/slide3.jpg" alt="슬라이드3"></a>
-                <a href="myHabit.html"><img src="img/slide4.jpg" alt="슬라이드4"></a>
-            </div>
+
+     <!-- main -->
+  <main class="container">
+    <h1>Habitt이란?</h1>
+
+    <section class="intro">
+      <h2>Habitt는 어떤 서비스인가요?</h2>
+      <p>
+        Habitt는 하루의 작은 실천을 기록하고,<br>
+        그 기록이 자연스럽게 습관으로 이어지도록 돕는 습관 관리 서비스입니다.
+      </p>
+      <p>
+        우리는 ‘의지’보다 ‘구조’가 습관을 만든다고 믿습니다.<br>
+        Habitt는 부담 없는 기록과 명확한 흐름을 통해<br>
+        꾸준함을 유지할 수 있는 환경을 제공합니다.
+      </p>
+    </section>
+
+    <section class="reason">
+      <h2>왜 Habitt인가요?</h2>
+      <p>
+        많은 습관 서비스가 완벽한 목표 설정과 강한 동기 부여를 요구합니다.<br>
+        하지만 Habitt는 다릅니다.
+      </p>
+      <p>
+        처음부터 잘하기보다는,<br>
+        <strong>계속할 수 있는 방식</strong>에 집중합니다.
+      </p>
+      <ul>
+        <li>하루 한 번, 간단한 체크</li>
+        <li>실패해도 다시 시작할 수 있는 구조</li>
+        <li>결과보다 과정을 보여주는 기록</li>
+      </ul>
+    </section>
+
+    <section class="values">
+      <h2>Habitt이 추구하는 가치</h2>
+      <div class="value-list">
+        <div class="value-item">
+          <h3>기록은 부담 없이</h3>
+          <p>누구나 쉽게 남길 수 있어야 합니다.</p>
         </div>
-    </div>
+        <div class="value-item">
+          <h3>습관은 흐름으로</h3>
+          <p>하루의 결과보다 이어지는 과정을 봅니다.</p>
+        </div>
+        <div class="value-item">
+          <h3>꾸준함은 설계로</h3>
+          <p>의지가 흔들려도 유지될 수 있도록 돕습니다.</p>
+        </div>
+      </div>
+    </section>
 
+    <section class="recommend">
+      <h2>이런 분들에게 추천합니다</h2>
+      <ul>
+        <li>습관 앱을 여러 번 설치했다가 지운 경험이 있는 분</li>
+        <li>계획보다 실행이 어려운 분</li>
+        <li>복잡한 기능보다 단순한 기록을 원하는 분</li>
+        <li>작은 변화부터 시작하고 싶은 분</li>
+      </ul>
+    </section>
 
+    <section class="closing">
+      <p class="closing-main">
+        내일의 나를 설계하는 것.
+      </p>
+      <p class="closing-sub">
+        Habitt는 그 시작을 함께합니다.
+      </p>
+      <button onclick="location.href='login.html'" class="cta-btn">지금 바로 시작하기</button>
+    </section>
 
-    <div class="myChallange">
-        <a href="myHabit.html">
-            <h3>현재 진행중인 습관</h3>
-            <hr>
-            <div>
-                🔒 로그인 시 확인 가능한 서비스입니다.
-            </div>
-
-        </a>
-    </div>
-
-
-    <footer class="footer">
+  </main>
+<footer class="footer">
         <div class="footer-inner">
             <div class="footer-left">
                 <h3>Habitt</h3>
@@ -138,10 +185,5 @@
             </div>
         </div>
     </footer>
-
-
-
-
 </body>
-
 </html>

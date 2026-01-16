@@ -1,4 +1,6 @@
-/* ===== reset ===== */
+/* =====================
+   RESET
+===================== */
 * {
     margin: 0;
     padding: 0;
@@ -21,31 +23,37 @@ body {
 }
 
 
-/* ===== header ===== */
+/* =====================
+   HEADER
+===================== */
 header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 16px 40px;
-    background-color: #ffffff;
+    background-color: #fff;
     border-bottom: 1px solid #ddd;
 
-    position: relative;
-    
 
+   
 }
 
 /* logo */
 .logo img {
-    height: 50px;
+    height: 60px;
+    max-width: 100%;
+    display: block;
 }
 
-/* ===== navigation ===== */
-.gnb {
-    flex: 1;
-    display: flex;
-    justify-content: center;
 
+/* =====================
+   NAVIGATION (GNB)
+===================== */
+.gnb {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -54,7 +62,7 @@ header {
 .menu {
     display: flex;
     gap: 60px;
-
+    white-space: nowrap; 
 }
 
 .menu > li {
@@ -62,51 +70,60 @@ header {
 }
 
 .menu > li > a {
-    font-size: 16px;
-    font-weight: 600;
-    padding: 8px 0;
     display: block;
+    padding: 8px 0;
+    font-size: 20px;
+    font-weight: 600;
+}
+.menu li > a:hover{
+    background-color: #d6dbff;
 }
 
-/* submenu */
+
+
+
+/* =====================
+   SUBMENU
+===================== */
 .submenu {
     position: absolute;
     top: 36px;
     left: 0;
-    background-color: #ffffff;
-    border: 1px solid #ddd;
-    border-radius: 6px;
     min-width: 150px;
-    display: none;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 3px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    display: none;
 }
 
 .submenu li a {
     display: block;
     padding: 10px 14px;
-    font-size: 14px;
+    font-size: 16px;
+    transition: all 0.2s ease;
 }
 
 .submenu li a:hover {
-    background-color: #f0f2f8;
+    color: #6b7cff;
+    font-weight: 600;
+    background-color: #f3f5ff;
 }
 
-/* hover */
-/* .menu > li:hover .submenu {
-    display: block;
-} */
 
-
-/* 로그인 */
+/* =====================
+   LOGIN / SIGNUP
+===================== */
 .log {
     display: flex;
     gap: 20px;
     font-weight: 600;
+    white-space: nowrap;
 }
 
 .login {
-    color: #555;
     padding: 6px 14px;
+    color: #555;
 }
 
 .signup {
@@ -117,24 +134,46 @@ header {
 }
 
 
+/* =====================
+   HAMBURGER
+===================== */
 .hamburger {
     width: 32px;
     height: 24px;
     background: none;
     border: none;
     cursor: pointer;
-    display: none; /* 기본은 숨김 */
+    display: none;
     flex-direction: column;
     justify-content: space-between;
+    position: relative;
+    z-index: 1000;
 }
 
 .hamburger span {
-    display: block;
     height: 3px;
     background-color: #333;
     border-radius: 2px;
+    transition: all 0.3s ease;
 }
 
+/* === X 상태 === */
+.hamburger.active span:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg);
+}
+
+
+/* =====================
+   MOBILE NAV
+===================== */
 .mobile-nav {
     position: fixed;
     top: 0;
@@ -142,8 +181,8 @@ header {
     width: 260px;
     height: 100vh;
     background: #fff;
-    transition: right 0.3s ease;
     box-shadow: -4px 0 10px rgba(0,0,0,0.15);
+    transition: right 0.3s ease;
     z-index: 999;
 }
 
@@ -161,6 +200,28 @@ header {
     font-weight: 600;
 }
 
+
+.mobile-sub {
+    display: none;
+    padding-left: 12px;
+}
+.mobile-sub.active {
+    display: block;
+}
+
+
+.mobile-title {
+    width: 100%;
+    background: none;
+    border: none;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 12px 0;
+    cursor: pointer;
+}
+
+
 .divider {
     height: 1px;
     background: #eee;
@@ -168,19 +229,91 @@ header {
 }
 
 
+/* =====================
+   RESPONSIVE
+===================== */
 @media (max-width: 850px) {
-    .gnb {
-        display: none;
-    }
-    .login,
-    .signup {
+    .gnb,
+    .log {
         display: none;
     }
 
     .hamburger {
         display: flex;
     }
-
-
 }
 
+
+
+/* ===== footer ===== */
+.footer {
+    background-color: #ffffff;
+    border-top: 1px solid #ddd;
+    padding: 40px 0;
+    font-size: 14px;
+    color: #555;
+}
+
+.footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+/* left */
+.footer-left h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #222;
+}
+
+.footer-left p {
+    line-height: 1.6;
+    color: #666;
+}
+
+/* center */
+.footer-center ul {
+    display: flex;
+    gap: 24px;
+}
+
+.footer-center a {
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.footer-center a:hover {
+    color: #4f6ef7;
+}
+
+/* right */
+.footer-right {
+    text-align: right;
+    line-height: 1.6;
+    color: #777;
+}
+
+/* ===== responsive ===== */
+@media (max-width: 768px) {
+    .footer-inner {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 24px;
+    }
+
+    .footer-center ul {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .footer-right {
+        text-align: center;
+    }
+}

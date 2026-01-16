@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Habitt!</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="css/myHabit.css">
 
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="js/script.js"></script>
+    <script src="js/myHabit.js"></script>
 </head>
 
 <body>
-
     <!-- header -->
     <header>
 
@@ -46,8 +46,8 @@
                 <li>
                     <a href="#">마이페이지</a>
                     <ul class="submenu">
-                        <li><a href="login.html">내 습관 통계</a></li>
-                        <li><a href="login.html">설정</a></li>
+                        <li><a href="#">내 습관 통계</a></li>
+                        <li><a href="#">설정</a></li>
                     </ul>
                 </li>
 
@@ -89,58 +89,80 @@
         </ul>
     </nav>
 
-    <!-- 메인 베너 -->
-    <!-- 메인 배너 -->
-    <div class="main">
-        <div class="imgslide">
-            <div class="slide-track">
-                <a href="#"><img src="img/slide1.jpg" alt="슬라이드1"></a>
-                <a href="#"><img src="img/slide2.jpg" alt="슬라이드2"></a>
-                <a href="#"><img src="img/slide3.jpg" alt="슬라이드3"></a>
-                <a href="myHabit.html"><img src="img/slide4.jpg" alt="슬라이드4"></a>
+    <!-- contents -->
+    <div class="contents">
+        <p id="todayDate"></p>
+
+        <div class="myhabit">
+            <div class="nowamount">
+                <h2>현재 챌린지 0개 진행중...</h2>
+            </div>
+            <div class="add-habit-wrap">
+                <button id="addHabitBtn">+ 새 습관</button>
+            </div>
+
+            <div class="InProgress">
+                <p class="empty-msg">아직 등록된 습관이 없어요 💤<br>새 습관을 추가해보세요!</p>
+            </div>
+
+        </div>
+
+        <!-- todo -->
+        <!-- <div id="todo" class="page">
+            <h1>오늘의 할일 : <span id="todoCount">0</span>개</h1>
+
+            <fieldset>
+                <h1>To-do List</h1>
+                <input type="text" id="todoInput" placeholder="할 일 작성" autofocus />
+                <button type="submit" id="addBtn">추가</button>
+                <h3>할 일 목록</h3>
+                <ul id="todoList"></ul>
+            </fieldset>
+
+
+        </div> -->
+
+
+        <div class="modal-bg" id="modalBg">
+            <div class="modal">
+                <h2>새 습관 만들기</h2>
+
+                <label>
+                    습관 이름
+                    <input type="text" id="habitName">
+                </label>
+
+                <label>
+                    카테고리
+                    <select id="habitCategory">
+                        <option value="">선택</option>
+                        <option value="건강">건강</option>
+                        <option value="운동">운동</option>
+                        <option value="공부">공부</option>
+                        <option value="생활">생활</option>
+                    </select>
+                </label>
+
+
+                <label>
+                    기간
+                    <select id="habitPeriod">
+                        <option value="30">30일</option>
+                        <option value="100">100일</option>
+                    </select>
+                </label>
+
+                <label>
+                    나를 위한 한마디
+                    <input type="text" id="habitMsg">
+                </label>
+
+                <div class="modal-btns">
+                    <button id="cancelBtn">취소</button>
+                    <button id="confirmBtn">확인</button>
+                </div>
             </div>
         </div>
-    </div>
-
-
-
-    <div class="myChallange">
-        <a href="myHabit.html">
-            <h3>현재 진행중인 습관</h3>
-            <hr>
-            <div>
-                🔒 로그인 시 확인 가능한 서비스입니다.
-            </div>
-
-        </a>
-    </div>
-
-
-    <footer class="footer">
-        <div class="footer-inner">
-            <div class="footer-left">
-                <h3>Habitt</h3>
-                <p>작은 습관이 큰 변화를 만듭니다.</p>
-            </div>
-
-            <div class="footer-center">
-                <ul>
-                    <li><a href="#">소개</a></li>
-                    <li><a href="#">기능</a></li>
-                    <li><a href="#">습관 관리</a></li>
-                    <li><a href="#">마이페이지</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-right">
-                <p>© 2026 Habitt</p>
-                <p>Frontend by 조유진</p>
-            </div>
-        </div>
-    </footer>
-
-
-
 
 </body>
 
