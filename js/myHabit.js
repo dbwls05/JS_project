@@ -5,33 +5,93 @@ document.addEventListener("DOMContentLoaded", () => {
   const modalBg = document.getElementById("modalBg");
   const inProgress = document.querySelector(".InProgress");
   const countText = document.querySelector(".nowamount h2");
+  const emptyMsg = document.querySelector(".empty-msg");
 
-  // 모달 열기
-  addHabitBtn.addEventListener("click", () => {
-    modalBg.style.display = "flex";
-  });
+  /* =====================
+     localStorage 유틸
+  ===================== */
+  function getHabits() {
+    return JSON.parse(localStorage.getItem("habits")) || [];
+  }
 
-  // 개수 업데이트
+  function saveHabits(habits) {
+    localStorage.setItem("habits", JSON.stringify(habits));
+  }
+
+  /* =====================
+     UI 관련
+  ===================== */
   function updateCount() {
     const count = document.querySelectorAll(".habit-card").length;
     countText.textContent = `현재 챌린지 ${count}개 진행중...`;
   }
 
-  // 빈 상태 메시지
-  const emptyMsg = document.querySelector(".empty-msg");
-
   function toggleEmptyMsg() {
     const count = document.querySelectorAll(".habit-card").length;
-    countText.textContent = `현재 챌린지 ${count}개 진행중...`;
-
-    if (count === 0) {
-      emptyMsg.style.display = "block";
-    } else {
-      emptyMsg.style.display = "none";
-    }
+    emptyMsg.style.display = count === 0 ? "block" : "none";
   }
 
-  // 습관 추가
+  /* =====================
+     습관 카드 생성
+  ===================== */
+  function createHabitCard(habit) {
+    const card = document.createElement("div");
+    card.className = "habit-card";
+    card.dataset.id = habit.id;
+
+    card.innerHTML = `
+      <h3>${habit.name}</h3>
+      <p class="category">${habit.category}</p>
+      <p class="count">${habit.currentDay} / ${habit.totalDays}일</p>
+
+      <div class="progressBar">
+        <div class="progressFill"></div>
+      </div>
+
+      <button class="todayBtn ${habit.isTodayDone ? "done" : ""}">
+        ${habit.isTodayDone ? "오늘 완료됨" : "오늘 완료"}
+      </button>
+      <button class="deleteBtn">삭제</button>
+    `;
+
+    const countEl = card.querySelector(".count");
+    const fillEl = card.querySelector(".progressFill");
+    const todayBtn = card.querySelector(".todayBtn");
+
+    function updateUI() {
+      countEl.textContent = `${habit.currentDay} / ${habit.totalDays}일`;
+      fillEl.style.width = `${(habit.currentDay / habit.totalDays) * 100}%`;
+    }
+
+    updateUI();
+
+    // 오늘 완료 버튼
+    todayBtn.addEventListener("click", () => {
+      habit.isTodayDone = !habit.isTodayDone;
+      habit.currentDay += habit.isTodayDone ? 1 : -1;
+
+      todayBtn.textContent = habit.isTodayDone ? "오늘 완료됨" : "오늘 완료";
+      todayBtn.classList.toggle("done");
+
+      updateUI();
+      saveHabits(getHabits().map(h => h.id === habit.id ? habit : h));
+    });
+
+    // 삭제 버튼
+    card.querySelector(".deleteBtn").addEventListener("click", () => {
+      const habits = getHabits().filter(h => h.id !== habit.id);
+      saveHabits(habits);
+      card.remove();
+      updateCount();
+      toggleEmptyMsg();
+    });
+
+    return card;
+  }
+
+  /* =====================
+     습관 추가
+  ===================== */
   function addHabit() {
     const name = document.getElementById("habitName").value.trim();
     const category = document.getElementById("habitCategory").value.trim();
@@ -42,62 +102,44 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    let currentDay = 0;
-    let isTodayDone = false;
+    const newHabit = {
+      id: Date.now(),
+      name,
+      category,
+      totalDays,
+      currentDay: 0,
+      isTodayDone: false,
+    };
 
-    const habit = document.createElement("div");
-    habit.className = "habit-card";
+    const habits = getHabits();
+    habits.push(newHabit);
+    saveHabits(habits);
 
-
-    habit.innerHTML = `
-      <h3>${name}</h3>
-      <p class="category">${category}</p>
-      <p class="count">${currentDay} / ${totalDays}일</p>
-
-      <div class="progressBar">
-        <div class="progressFill"></div>
-      </div>
-
-      <button class="todayBtn">오늘 완료</button>
-      <button class="deleteBtn">삭제</button>
-    `;
-
-    const countEl = habit.querySelector(".count");
-    const fillEl = habit.querySelector(".progressFill");
-    const todayBtn = habit.querySelector(".todayBtn");
-
-    function updateUI() {
-      countEl.textContent = `${currentDay} / ${totalDays}일`;
-      fillEl.style.width = `${(currentDay / totalDays) * 100}%`;
-    }
-
-    todayBtn.addEventListener("click", () => {
-      if (!isTodayDone) {
-        currentDay++;
-        isTodayDone = true;
-        todayBtn.textContent = "오늘 완료됨";
-        todayBtn.classList.add("done");
-      } else {
-        currentDay--;
-        isTodayDone = false;
-        todayBtn.textContent = "오늘 완료";
-        todayBtn.classList.remove("done");
-      }
-      updateUI();
-    });
-
-    habit.querySelector(".deleteBtn").addEventListener("click", () => {
-      habit.remove();
-      updateCount();
-      toggleEmptyMsg();
-    });
-
-    inProgress.appendChild(habit);
-    toggleEmptyMsg();
+    inProgress.appendChild(createHabitCard(newHabit));
     updateCount();
+    toggleEmptyMsg();
 
     modalBg.style.display = "none";
   }
+
+  /* =====================
+     초기 로드
+  ===================== */
+  function loadHabits() {
+    const habits = getHabits();
+    habits.forEach(habit => {
+      inProgress.appendChild(createHabitCard(habit));
+    });
+    updateCount();
+    toggleEmptyMsg();
+  }
+
+  /* =====================
+     이벤트
+  ===================== */
+  addHabitBtn.addEventListener("click", () => {
+    modalBg.style.display = "flex";
+  });
 
   confirmBtn.addEventListener("click", addHabit);
 
@@ -105,15 +147,14 @@ document.addEventListener("DOMContentLoaded", () => {
     modalBg.style.display = "none";
   });
 
-  // 오늘 날짜 표시
+  /* =====================
+     오늘 날짜
+  ===================== */
   const today = new Date();
   document.getElementById("todayDate").textContent = today.toLocaleDateString(
     "ko-KR",
-    {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-      weekday: "short",
-    }
+    { year: "numeric", month: "long", day: "numeric", weekday: "short" }
   );
+
+  loadHabits();
 });
